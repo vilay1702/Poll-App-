@@ -1,0 +1,14 @@
+{%extends 'base.html' %} {% block content %}
+<main>
+  <h1 class="heading">Poll</h1>
+  {% if questions %} {% for question in questions %}
+  <div class="polls">
+    <h2>{{ question.question_text }}</h2>
+    <a href="{% url 'polls:detail' question.id %}" class="btn">Vote Now</a>
+    <a href="{% url 'polls:results' question.id %}" class="btn">Results</a>
+  </div>
+  {% endfor %} {% else %}
+  <h2 id="noPolls">No polls available</h2>
+  {% endif %}
+</main>
+{% endblock %}
